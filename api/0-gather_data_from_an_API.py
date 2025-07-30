@@ -3,7 +3,7 @@
 Script to fetch and display employee TODO list progress from a REST API
 """
 
-import  requests
+import requests
 import sys
 
 
@@ -41,13 +41,13 @@ def get_employee_todo_progress(employee_id):
     done_tasks = sum(1 for task in todos_data if task.get("completed"))
 
     # Print employee progress with exact format
-    print("Employee {} is done with tasks({}/{}):".format(
+    print("Employee %s is done with tasks(%d/%d):" % (
         employee_name, done_tasks, total_tasks))
 
     # Print completed task titles with exact formatting
     for task in todos_data:
         if task.get("completed"):
-            print("\t {}".format(task.get("title")))
+            print("\t %s" % task.get("title"))
 
 
 if __name__ == "__main__":
@@ -61,4 +61,3 @@ if __name__ == "__main__":
     except ValueError:
         print("Error: Employee ID must be an integer")
         sys.exit(1)
-        
