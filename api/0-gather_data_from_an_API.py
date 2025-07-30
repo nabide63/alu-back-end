@@ -27,7 +27,7 @@ def get_employee_todo_progress(employee_id):
         return
 
     user_data = user_response.json()
-    employee_name = user_data.get("name")
+    employee_name = user_data.get("name").strip()  # Remove any trailing spaces
 
     # Fetch todos data
     todos_response = requests.get(todos_url)
