@@ -16,7 +16,9 @@ def get_employee_todo_progress(employee_id):
     """
     # API endpoints
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+    todos_url = (
+        f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+    )
 
     # Fetch user data
     user_response = requests.get(user_url)
@@ -34,10 +36,11 @@ def get_employee_todo_progress(employee_id):
     # Calculate completed and total tasks
     total_tasks = len(todos_data)
     done_tasks = sum(1 for task in todos_data if task.get("completed"))
-    
+
     # Print employee progress
-    print(f"Employee {employee_name} is done with tasks({done_tasks}/{total_tasks}):")
-    
+    print(f"Employee {employee_name} is done with tasks({done_tasks}/"
+          f"{total_tasks}):")
+
     # Print completed task titles
     for task in todos_data:
         if task.get("completed"):
@@ -48,7 +51,7 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python3 0-gather_data_from_an_API.py <employee_id>")
         sys.exit(1)
-    
+
     try:
         employee_id = int(sys.argv[1])
         get_employee_todo_progress(employee_id)
