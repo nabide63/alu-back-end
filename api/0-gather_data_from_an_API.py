@@ -41,13 +41,13 @@ def get_employee_todo_progress(employee_id):
     done_tasks = sum(1 for task in todos_data if task.get("completed"))
 
     # Print employee progress with exact format
-    print("Employee %s is done with tasks(%d/%d):" % (
-        employee_name, done_tasks, total_tasks))
+    print("Employee " + employee_name + " is done with tasks(" +
+          str(done_tasks) + "/" + str(total_tasks) + "):")
 
     # Print completed task titles with exact formatting
     for task in todos_data:
         if task.get("completed"):
-            print("\t %s" % task.get("title"))
+            print("\t " + task.get("title"))
 
 
 if __name__ == "__main__":
